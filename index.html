@@ -1,109 +1,118 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8" />
-  <title>🎄 2026 🎄</title>
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
+<meta charset="UTF-8" />
+<title>🎄 2026 🎄</title>
 
-    body {
-      min-height: 100vh;
-      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: #fff;
-      overflow: hidden;
-      transition: background 1s ease;
-    }
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:'Segoe UI',sans-serif;}
 
-    canvas { position: fixed; inset: 0; pointer-events: none; }
+body{
+  min-height:100vh;
+  background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:#fff;
+  overflow:hidden;
+  transition:background 1s ease;
+}
 
-    .container {
-      max-width: 900px;
-      width: 100%;
-      padding: 40px;
-      text-align: center;
-      position: relative;
-      z-index: 2;
-    }
+canvas{position:fixed;inset:0;pointer-events:none;}
 
-    h1 { margin-bottom: 30px; font-size: 2.5rem; }
+.container{
+  max-width:900px;
+  width:100%;
+  padding:40px;
+  text-align:center;
+  position:relative;
+  z-index:2;
+}
 
-    .friends {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 25px;
-    }
+h1{margin-bottom:10px;font-size:2.5rem;}
 
-    .friend {
-      background: rgba(255,255,255,0.1);
-      border-radius: 20px;
-      padding: 20px;
-      cursor: pointer;
-      transition: transform 0.3s, background 0.3s;
-    }
+#countdown{
+  font-size:1.3rem;
+  margin-bottom:25px;
+  font-weight:600;
+  letter-spacing:1px;
+  animation:glow 2s infinite alternate;
+}
 
-    .friend:hover { transform: translateY(-8px); background: rgba(255,255,255,0.2); }
+@keyframes glow{
+  from{text-shadow:0 0 5px #fff;}
+  to{text-shadow:0 0 15px #ffd700;}
+}
 
-    .friend img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      border-radius: 15px;
-      margin-bottom: 15px;
-    }
+.friends{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:25px;
+}
 
-    /* MODAL */
-    .modal {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.75);
-      display: none;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-    }
+.friend{
+  background:rgba(255,255,255,0.1);
+  border-radius:20px;
+  padding:20px;
+  cursor:pointer;
+  transition:.3s;
+}
 
-    .modal.active { display: flex; }
+.friend:hover{
+  transform:translateY(-8px);
+  background:rgba(255,255,255,0.2);
+}
 
-    .modal-content {
-      background: #fff;
-      color: #333;
-      max-width: 500px;
-      width: 90%;
-      padding: 30px;
-      border-radius: 20px;
-      position: relative;
-      animation: scaleIn 0.3s ease;
-    }
+.friend img{
+  width:100%;
+  height:180px;
+  object-fit:cover;
+  border-radius:15px;
+  margin-bottom:15px;
+}
 
-    @keyframes scaleIn {
-      from { transform: scale(0.9); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
-    }
+/* MODAL */
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.75);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+}
 
-    .close {
-      position: absolute;
-      top: 15px;
-      right: 20px;
-      font-size: 1.5rem;
-      cursor: pointer;
-    }
+.modal.active{display:flex;}
 
-    .typing::after { content: "|"; animation: blink 1s infinite; }
+.modal-content{
+  background:#fff;
+  color:#333;
+  max-width:500px;
+  width:90%;
+  padding:30px;
+  border-radius:20px;
+  position:relative;
+  animation:scaleIn .3s ease;
+}
 
-    @keyframes blink { 50% { opacity: 0; } }
+@keyframes scaleIn{
+  from{transform:scale(.9);opacity:0;}
+  to{transform:scale(1);opacity:1;}
+}
 
-    .modal-content p {
-      margin-top: 15px;
-      line-height: 1.6;
-      word-wrap: break-word;
-      white-space: normal;
-    }
+.close{
+  position:absolute;
+  top:15px;
+  right:20px;
+  font-size:1.5rem;
+  cursor:pointer;
+}
 
-    footer { margin-top: 40px; opacity: 0.7; }
-  </style>
+.typing::after{content:"|";animation:blink 1s infinite;}
+@keyframes blink{50%{opacity:0;}}
+
+footer{margin-top:40px;opacity:.7;}
+</style>
 </head>
 
 <body>
@@ -111,44 +120,38 @@
 <canvas id="snow"></canvas>
 <canvas id="confetti"></canvas>
 
+<!-- 🎵 YENİ YIL MÜZİĞİ -->
 <audio id="music" autoplay loop>
-  <source src="https://cdn.pixabay.com/audio/2022/10/25/audio_7c3b6e98f0.mp3" type="audio/mpeg">
+  <source src="https://cdn.pixabay.com/audio/2022/12/06/audio_8e4a9b2c94.mp3" type="audio/mpeg">
 </audio>
 
 <div class="container">
   <h1>🎆 For The Fireflies 🎆</h1>
+  <div id="countdown">🎄 Yeni yıla kalan süre: <span>--:--:--</span></div>
 
   <div class="friends">
-    <div class="friend" data-name="Zilan" data-pass="1234"
-      data-bg="linear-gradient(135deg,#ff9a9e,#fad0c4)"
-      data-message="Umarım ilkokulda tanıdığım neşeli ve tatlı o kız neşesini hiç kaybetmez. Yüzünün hep güldüğü bir sene olsun, iyi seneler :)">
-      <img src="./zilan.png">
-      <h2>Zilan</h2>
+    <div class="friend" data-name="Zilan" data-pass="1234" data-bg="linear-gradient(135deg,#ff9a9e,#fad0c4)"
+    data-message="Sıraları paylaştığımız o çocukluk günlerinden bugüne hayatımda hep ayrı bir yerin oldu.Arkadaş kalmış olmamız değerli.Yeni yıl sana kalbinin güzelliklerini getirsin, her şey gönlünce olsun.İyi seneler" :)">
+      <img src="./zilan.png"><h2>Zilan</h2>
     </div>
 
-    <div class="friend" data-name="Zeynep" data-pass="4321"
-      data-bg="linear-gradient(135deg,#a18cd1,#fbc2eb)"
-      data-message="Yeni yılda parolsuz mutlu ve huzurlu bir yıl diliyorum sana. İyi seneler ✨">
-      <img src="./zeynep.png">
-      <h2>Zeynep</h2>
+    <div class="friend" data-name="Zeynep" data-pass="4321" data-bg="linear-gradient(135deg,#a18cd1,#fbc2eb)"
+    data-message="Yeni yılın,tüm yan etkilerden uzak prospektüsünde sadece mutluluk yazan bir yıl olsun.İyi seneler:)">
+      <img src="./zeynep.png"><h2>Zeynep</h2>
     </div>
 
-    <div class="friend" data-name="İbrahim" data-pass="1111"
-      data-bg="linear-gradient(135deg,#43cea2,#185a9d)"
-      data-message="2026'da tüm hedeflerine adım adım ulaşmanı diliyorum kardeşim. Dilerim en kısa zamanda o motorun üstünde kendi istediğin yerlere gidersin. İyi seneler 🎯">
-      <img src="./ibrahim.png">
-      <h2>İbrahim</h2>
+    <div class="friend" data-name="İbrahim" data-pass="1111" data-bg="linear-gradient(135deg,#43cea2,#185a9d)"
+    data-message="2026'da tüm hedeflerine adım adım ulaşmanı diliyorum kardeşim. İyi seneler 🎯">
+      <img src="./ibrahim.png"><h2>İbrahim</h2>
     </div>
 
-    <div class="friend" data-name="Polat" data-pass="2222"
-      data-bg="linear-gradient(135deg,#f7971e,#ffd200)"
-      data-message="Canpolat, bu yıl kurtardığın canlar kadar hayat bulduğun mutlu bir yıl olsun senin için. İyi seneler kardeşim">
-      <img src="./polat.png">
-      <h2>Polat</h2>
+    <div class="friend" data-name="Polat" data-pass="2222" data-bg="linear-gradient(135deg,#f7971e,#ffd200)"
+    data-message="Canpolat, kurtardığın canlar kadar hayat bulduğun bir yıl olsun. İyi seneler kardeşim">
+      <img src="./polat.png"><h2>Polat</h2>
     </div>
   </div>
 
-  <footer>🎄 Mutlu Yıllar 🎄</footer>
+  <footer id="footerText">🎄 31.12.2025 🎄</footer>
 </div>
 
 <div class="modal" id="modal">
@@ -160,101 +163,118 @@
 </div>
 
 <script>
-  const friends = document.querySelectorAll('.friend');
-  const modal = document.getElementById('modal');
-  const modalTitle = document.getElementById('modalTitle');
-  const modalMessage = document.getElementById('modalMessage');
+/* GERİ SAYIM */
+const countdownSpan=document.querySelector("#countdown span");
+const footerText=document.getElementById("footerText");
 
-  function typeText(text, callback) {
-    modalMessage.textContent = "";
-    let i = 0;
-    const interval = setInterval(() => {
-      modalMessage.textContent += text[i];
-      i++;
-      if (i >= text.length) {
-        clearInterval(interval);
-        callback && callback();
-      }
-    }, 40);
+function updateCountdown(){
+  const now=new Date();
+  const midnight=new Date();
+  midnight.setHours(24,0,0,0);
+
+  const diff=midnight-now;
+
+  if(diff<=0){
+    countdownSpan.textContent="🎆 MUTLU YILLAR! 🎆";
+    footerText.textContent="✨ Yeni yıl mesajım için giriş yapınız ✨";
+    launchConfetti();
+    return;
   }
 
-  friends.forEach(friend => {
-    friend.addEventListener('click', () => {
-      const pass = prompt(friend.dataset.name + " için şifreyi gir:");
-      if (pass === friend.dataset.pass) {
-        document.body.style.background = friend.dataset.bg;
-        document.body.style.overflow = "hidden";
-        modalTitle.textContent = friend.dataset.name;
-        modal.classList.add('active');
-        typeText(friend.dataset.message, launchConfetti);
-      } else {
-        alert("Yanlış şifre ❌");
-      }
-    });
+  const h=Math.floor(diff/1000/60/60);
+  const m=Math.floor((diff/1000/60)%60);
+  const s=Math.floor((diff/1000)%60);
+
+  countdownSpan.textContent=
+    `${String(h).padStart(2,"0")}:${String(m).padStart(2,"0")}:${String(s).padStart(2,"0")}`;
+}
+setInterval(updateCountdown,1000);
+updateCountdown();
+
+/* MODAL + YAZI */
+const friends=document.querySelectorAll(".friend");
+const modal=document.getElementById("modal");
+const modalTitle=document.getElementById("modalTitle");
+const modalMessage=document.getElementById("modalMessage");
+
+function typeText(text,cb){
+  modalMessage.textContent="";
+  let i=0;
+  const int=setInterval(()=>{
+    modalMessage.textContent+=text[i++];
+    if(i>=text.length){clearInterval(int);cb&&cb();}
+  },40);
+}
+
+friends.forEach(f=>{
+  f.onclick=()=>{
+    const pass=prompt(f.dataset.name+" için şifreyi gir:");
+    if(pass===f.dataset.pass){
+      document.body.style.background=f.dataset.bg;
+      modalTitle.textContent=f.dataset.name;
+      modal.classList.add("active");
+      typeText(f.dataset.message,launchConfetti);
+    }else alert("Yanlış şifre ❌");
+  }
+});
+document.getElementById("close").onclick=()=>modal.classList.remove("active");
+
+/* SNOW */
+const snowCanvas=document.getElementById("snow");
+const snowCtx=snowCanvas.getContext("2d");
+snowCanvas.width=innerWidth;
+snowCanvas.height=innerHeight;
+
+let flakes=Array.from({length:120},()=>({
+  x:Math.random()*snowCanvas.width,
+  y:Math.random()*snowCanvas.height,
+  r:Math.random()*3+1
+}));
+
+function snow(){
+  snowCtx.clearRect(0,0,snowCanvas.width,snowCanvas.height);
+  snowCtx.fillStyle="white";
+  flakes.forEach(f=>{
+    snowCtx.beginPath();
+    snowCtx.arc(f.x,f.y,f.r,0,Math.PI*2);
+    snowCtx.fill();
+    f.y+=f.r;
+    if(f.y>snowCanvas.height)f.y=0;
   });
+  requestAnimationFrame(snow);
+}
+snow();
 
-  document.getElementById('close').onclick = () => {
-    modal.classList.remove('active');
-    document.body.style.overflow = "auto";
-  };
+/* CONFETTI */
+const confettiCanvas=document.getElementById("confetti");
+const confCtx=confettiCanvas.getContext("2d");
+confettiCanvas.width=innerWidth;
+confettiCanvas.height=innerHeight;
+let confettis=[];
 
-  /* SNOW */
-  const snowCanvas = document.getElementById('snow');
-  const snowCtx = snowCanvas.getContext('2d');
-  snowCanvas.width = innerWidth;
-  snowCanvas.height = innerHeight;
-
-  let flakes = Array.from({ length: 100 }, () => ({
-    x: Math.random() * snowCanvas.width,
-    y: Math.random() * snowCanvas.height,
-    r: Math.random() * 3 + 1
+function launchConfetti(){
+  confettis=Array.from({length:180},()=>({
+    x:Math.random()*confettiCanvas.width,
+    y:-10,
+    r:Math.random()*6+4,
+    c:`hsl(${Math.random()*360},100%,50%)`,
+    v:Math.random()*4+2
   }));
+  animateConfetti();
+}
 
-  function snow() {
-    snowCtx.clearRect(0,0,snowCanvas.width,snowCanvas.height);
-    snowCtx.fillStyle = 'white';
-    flakes.forEach(f => {
-      snowCtx.beginPath();
-      snowCtx.arc(f.x, f.y, f.r, 0, Math.PI * 2);
-      snowCtx.fill();
-      f.y += f.r;
-      if (f.y > snowCanvas.height) f.y = 0;
-    });
-    requestAnimationFrame(snow);
-  }
-  snow();
-
-  /* CONFETTI */
-  const confettiCanvas = document.getElementById('confetti');
-  const confCtx = confettiCanvas.getContext('2d');
-  confettiCanvas.width = innerWidth;
-  confettiCanvas.height = innerHeight;
-  let confettis = [];
-
-  function launchConfetti() {
-    confettis = Array.from({ length: 150 }, () => ({
-      x: Math.random() * confettiCanvas.width,
-      y: -10,
-      r: Math.random() * 6 + 4,
-      c: `hsl(${Math.random() * 360},100%,50%)`,
-      v: Math.random() * 3 + 2
-    }));
-    animateConfetti();
-  }
-
-  function animateConfetti() {
-    confCtx.clearRect(0,0,confettiCanvas.width,confettiCanvas.height);
-    confettis.forEach(c => {
-      confCtx.fillStyle = c.c;
-      confCtx.beginPath();
-      confCtx.arc(c.x, c.y, c.r, 0, Math.PI * 2);
-      confCtx.fill();
-      c.y += c.v;
-    });
-    if (confettis.some(c => c.y < confettiCanvas.height)) {
-      requestAnimationFrame(animateConfetti);
-    }
-  }
+function animateConfetti(){
+  confCtx.clearRect(0,0,confettiCanvas.width,confettiCanvas.height);
+  confettis.forEach(c=>{
+    confCtx.fillStyle=c.c;
+    confCtx.beginPath();
+    confCtx.arc(c.x,c.y,c.r,0,Math.PI*2);
+    confCtx.fill();
+    c.y+=c.v;
+  });
+  if(confettis.some(c=>c.y<confettiCanvas.height))
+    requestAnimationFrame(animateConfetti);
+}
 </script>
 
 </body>
